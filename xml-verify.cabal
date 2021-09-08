@@ -1,0 +1,50 @@
+cabal-version:      2.4
+name:               xml-verify
+version:            0.1.0.0
+synopsis:
+    Signing XML documents and verifying XML signatures
+
+-- A longer description of the package.
+description:
+    A small library, that calls xmlsec, for signing and verifying XML. It also contains a wrapper for use with HXT
+homepage:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             James Hobson
+maintainer:         james.hobson@jotron.com
+
+-- A copyright notice.
+-- copyright:
+category:           Cryptography
+extra-source-files: CHANGELOG.md,
+                    configure,
+                    configure.ac,
+                    xml-verify.buildinfo.in
+
+extra-tmp-files: xml-verify.buildinfo,
+                 config.status,
+                 config.log
+
+build-type:       Configure
+
+
+library
+    
+    exposed-modules:  Crypto.PubKey.Xml,
+                      Crypto.PubKey.Xml.Arrows
+
+    -- Modules included in this library but not exported.
+    -- other-modules:
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    base <= 5.0,
+                      cryptostore,
+                      x509,
+                      hxt,
+                      mtl
+    hs-source-dirs:   src
+    default-language: Haskell2010
