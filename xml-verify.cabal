@@ -1,63 +1,53 @@
 cabal-version:      2.4
 name:               xml-verify
 version:            0.1.0.0
-synopsis:
-    Verifying XML signatures
-
--- A longer description of the package.
-description:
-    A small library, that calls xmlsec, for verifying XML. It also contains a wrapper for use with HXT
-homepage:
-
--- A URL where users can report bugs.
-bug-reports:        https://github.com/jotron-as/xml-verify/issues
-homepage:           https://github.com/jotron-as/xml-verify
 license:            BSD-3-Clause
 license-file:       LICENSE
-author:             James Hobson
 maintainer:         james.hobson@jotron.com
-tested-with:        GHC == 9.0.1
+author:             James Hobson
+tested-with:        ghc ==9.0.1 || ==8.10.7 || ==8.8.4
+homepage:           https://github.com/jotron-as/xml-verify
+bug-reports:        https://github.com/jotron-as/xml-verify/issues
+synopsis:           Verifying XML signatures
+description:
+    A small library, that calls xmlsec, for verifying XML. It also contains a wrapper for use with HXT
 
--- A copyright notice.
--- copyright:
 category:           Cryptography
-extra-source-files: CHANGELOG.md,
-                    configure,
-                    configure.ac,
-                    xml-verify.buildinfo.in
+build-type:         Configure
+extra-source-files:
+    CHANGELOG.md
+    configure
+    configure.ac
+    xml-verify.buildinfo.in
 
-extra-tmp-files: xml-verify.buildinfo,
-                 config.status,
-                 config.log
-
-build-type:       Configure
+extra-tmp-files:
+    xml-verify.buildinfo
+    config.status
+    config.log
 
 source-repository head
-  type: git
-  location: http://github.com/jotron-as/xml-verify.git
+    type:     git
+    location: http://github.com/jotron-as/xml-verify.git
 
 library
-    
-    exposed-modules:  Crypto.PubKey.Xml,
-                      Crypto.PubKey.Xml.Arrows
-                      Crypto.PubKey.Xml.Errors
-    include-dirs:     cbits
-    c-sources:        cbits/xml-verify.c,
-                      cbits/xml-verify.h
-    extra-libraries: xmlsec1
+    exposed-modules:
+        Crypto.PubKey.Xml
+        Crypto.PubKey.Xml.Arrows
+        Crypto.PubKey.Xml.Errors
 
+    c-sources:
+        cbits/xml-verify.c
+        cbits/xml-verify.h
 
-    -- Modules included in this library but not exported.
-    -- other-modules:
-
-    -- LANGUAGE extensions used by modules in this package.
-    -- other-extensions:
-    build-depends:    base <= 5.0,
-                      cryptostore,
-                      x509,
-                      pem,
-                      hxt,
-                      mtl,
-                      bytestring
     hs-source-dirs:   src
     default-language: Haskell2010
+    extra-libraries:  xmlsec1
+    include-dirs:     cbits
+    build-depends:
+        base >=4.13.0.0 && <=5.0,
+        cryptostore >=0.2.1.0 && <0.3,
+        x509 >=1.7.5 && <1.8,
+        pem >=0.2.4 && <0.3,
+        hxt >=9.3.1.22 && <9.4,
+        mtl >=2.2.2 && <2.3,
+        bytestring >=0.10.10.1 && <0.11
