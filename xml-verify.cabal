@@ -2,7 +2,7 @@ cabal-version:      2.4
 name:               xml-verify
 version:            0.1.0.0
 synopsis:
-    Signing XML documents and verifying XML signatures
+    Verifying XML signatures
 
 -- A longer description of the package.
 description:
@@ -10,11 +10,17 @@ description:
 homepage:
 
 -- A URL where users can report bugs.
--- bug-reports:
+bug-reports:        https://github.com/jotron-as/xml-verify/issues
+homepage:           https://github.com/jotron-as/xml-verify
 license:            BSD-3-Clause
 license-file:       LICENSE
 author:             James Hobson
 maintainer:         james.hobson@jotron.com
+tested-with:        GHC == 9.0.1
+
+source-repository head
+  type: git
+  location: http://github.com/jotron-as/xml-verify.git
 
 -- A copyright notice.
 -- copyright:
