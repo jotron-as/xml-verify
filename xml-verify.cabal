@@ -6,7 +6,7 @@ synopsis:
 
 -- A longer description of the package.
 description:
-    A small library, that calls xmlsec, for signing and verifying XML. It also contains a wrapper for use with HXT
+    A small library, that calls xmlsec, for verifying XML. It also contains a wrapper for use with HXT
 homepage:
 
 -- A URL where users can report bugs.
@@ -35,6 +35,12 @@ library
     
     exposed-modules:  Crypto.PubKey.Xml,
                       Crypto.PubKey.Xml.Arrows
+                      Crypto.PubKey.Xml.Errors
+    include-dirs:     cbits
+    c-sources:        cbits/xml-verify.c,
+                      cbits/xml-verify.h
+    extra-libraries: xmlsec1
+
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -44,7 +50,9 @@ library
     build-depends:    base <= 5.0,
                       cryptostore,
                       x509,
+                      pem,
                       hxt,
-                      mtl
+                      mtl,
+                      bytestring
     hs-source-dirs:   src
     default-language: Haskell2010
