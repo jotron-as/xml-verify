@@ -30,19 +30,20 @@ foreign import ccall "verify_doc" cVerifyDoc :: CString -> CSize -> CString -> C
 foreign import ccall "verify_doc_pem" cVerifyDocPem :: CString -> CSize -> CString -> IO CInt
 
 returnCode :: CInt -> Either XmlVerifyError Bool
-returnCode 0   = Right True
-returnCode -1  = Right False
-returnCode -2  = Left XmlSecInitFailed
-returnCode -3  = Left XmlSecIncomp     
-returnCode -4  = Left XmlSecCryptoFail
-returnCode -5  = Left CryptoInitFailed
-returnCode -6  = Left XmlCryptoFailed 
-returnCode -7  = Left XmlParseFail    
-returnCode -8  = Left XmlNoStartNode  
-returnCode -9  = Left XmlSigCreateFail
-returnCode -10 = Left XmlPemLoadFail  
-returnCode -11 = Left XmlPemNameFail  
-returnCode -12 = Left VeryifyFail     
+returnCode ( 0 ) = Right True
+returnCode (-1 ) = Right False
+returnCode (-2 ) = Left XmlSecInitFailed
+returnCode (-3 ) = Left XmlSecIncomp     
+returnCode (-4 ) = Left XmlSecCryptoFail
+returnCode (-5 ) = Left CryptoInitFailed
+returnCode (-6 ) = Left XmlCryptoFailed 
+returnCode (-7 ) = Left XmlParseFail    
+returnCode (-8 ) = Left XmlNoStartNode  
+returnCode (-9 ) = Left XmlSigCreateFail
+returnCode (-10) = Left XmlPemLoadFail  
+returnCode (-11) = Left XmlPemNameFail  
+returnCode (-12) = Left VeryifyFail
+returnCode  _    = Right False
 
 -- | verify XML file with given public key
 verifyXmlFile :: (MonadIO m) => FilePath -> PubKey -> m (Either XmlVerifyError Bool)
