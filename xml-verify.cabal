@@ -16,14 +16,6 @@ category:           Cryptography
 build-type:         Simple
 extra-source-files:
     CHANGELOG.md
-    configure
-    configure.ac
-    xml-verify.buildinfo.in
-
-extra-tmp-files:
-    xml-verify.buildinfo
-    config.status
-    config.log
 
 source-repository head
     type:     git
